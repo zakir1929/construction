@@ -1,0 +1,14 @@
+.featured-boxes-style-3 .featured-box.featured-box-secondary .icon-featured {
+    border-color: green !important;
+    color: green !important;
+}
+
+.featured-box-effect-3.featured-box-secondary:hover .icon-featured {
+    border-color: green !important;
+    color: white !important;
+    background: green !important;
+}
+
+.featured-box-effect-3.featured-box-secondary .icon-featured:after {
+    box-shadow: 0 0 0 10px green !important;
+}

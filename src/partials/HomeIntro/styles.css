@@ -1,0 +1,34 @@
+.home-intro{
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+    background-color: #f7f7f7 !important;
+}
+
+.home-intro h2{
+    font-weight: 700;
+    color: #1c5fa8;
+    margin-bottom: 4px;
+    font-size: 28px;
+    line-height: 28px;
+    letter-spacing: -1.4px;
+}
+
+.home-intro .contact-btn{
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    padding: 1.3132rem 2.4rem !important;
+    animation-delay: 1500ms !important;
+    background: transparent !important;
+    border-color: #1c5fa8 !important;
+    color: #1c5fa8 !important;
+    border-radius: 12px !important;
+}
+
+
+.home-intro .contact-btn:hover, 
+.home-intro .contact-btn:focus, 
+.home-intro .contact-btn:active {
+    background-color: #1c5fa8 !important;
+    border-color: #1c5fa8 !important;
+    color: #ffffff !important;
+}

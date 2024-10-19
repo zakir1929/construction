@@ -1,0 +1,84 @@
+@media (min-width: 1200px) {
+    .container:not(.container-bs):not(.container-xl-custom):not(.container-xxl-custom) {
+        max-width: 1200px;
+    }
+}
+
+#header {
+    transition: all 0.3s ease;
+}
+
+
+#header.header-effect-shrink .header-logo {
+    margin: 0;
+}
+
+#header .header-nav-main ul > li.dropdown > a {
+    font-family: Poppins, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: -0.5px;
+    color: #444444;
+    padding: 43px 14.4px 43px 14.4px !important;
+}
+
+#header .header-nav-main ul.header-extra-info{
+    font-family: Poppins, sans-serif;
+}
+
+#header .header-nav-features:before, #header .header-nav-features:after {
+    background: rgba(0, 0, 0, 0.03);
+    content: none;
+    width: 1px;
+    height: 35px;
+    position: absolute;
+    display: block;
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+    left: 0;
+}
+
+#header .header-nav-features .nav-header-nav-top-icon{
+    font-size: 22px;
+}
+
+#header .header-nav-features {
+    position: relative;
+    padding-left: 20px;
+    margin-left: 10px;
+    padding-top: 10px;
+}
+
+#header .header-nav-features .header-nav-features-dropdown{
+    pointer-events: auto;
+}
+
+.featured-boxes-modern-style-2 .featured-box .box-content{
+    padding: 15px !important;
+}
+
+#header {
+    position: sticky !important;
+    top: 0 !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;  
+    z-index: 1000 !important; 
+}
+
+#header.is-sticky .header-logo img{
+    width: 110px !important;
+}
+
+#header.is-sticky .header-nav-main ul > li.dropdown > a{
+    padding: 24px 14.4px 24px 14.4px !important;
+}
+
+#header.header-effect-shrink.is-sticky .header-container{
+    min-height: 75px !important;
+}
+
+.nav.nav-pills .dropdown-menu a:hover,
+.nav.nav-pills .dropdown-menu a:focus,
+.nav.nav-pills .dropdown-menu a.active{
+    background-color: #f8f9fa !important;
+}
