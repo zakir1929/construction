@@ -26,21 +26,13 @@ const MainMenu = (props) => {
                             Products
                         </a>
                         <ul className="dropdown-menu">
-                            <li>
-                                <NavLink className="dropdown-item" to="/product-detail">
-                                    Style Switcher 1
+                            {props?.divisions?.map((division,key) => (
+                            <li key={key}>
+                                <NavLink className="dropdown-item" to={`/division/${division.slug}`} >
+                                    {division.title}
                                 </NavLink>
                             </li>
-                            <li>
-                                <NavLink className="dropdown-item" to="/product-detail">
-                                    Style Switcher 2
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink className="dropdown-item" to="/product-detail">
-                                    Style Switcher 3
-                                </NavLink>
-                            </li>
+                            ))}
                         </ul>
                     </li>
                     <li className="dropdown">

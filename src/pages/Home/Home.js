@@ -8,7 +8,7 @@ import HomeAboutUs from '../../partials/HomeAboutUs/HomeAboutUs.js'
 import HomeParallaxSection from '../../partials/HomeParallaxSection/HomeParallaxSection.js'
 
 import FancyBoxGallery from '../../partials/FancyBoxGallery/FancyBoxGallery.js'
-import Products from '../../partials/Products/Products.js'
+import Divisions from '../../partials/Divisions/Divisions.js'
 
 const Home = props => {
   return (
@@ -17,8 +17,8 @@ const Home = props => {
                 <HomeSlider />
                 <HomeIntro />
                 <HomeAboutUs />            
-                <HomeParallaxSection />                
-                <Products />            
+                <HomeParallaxSection />         
+                <Divisions />            
                 <FancyBoxGallery />            
             </div>
         </React.Fragment>

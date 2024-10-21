@@ -3,9 +3,13 @@ import React from 'react';
 import './styles.css';
 
 
-const Dashboard = props => {
+const Dashboard = (props) => {
   return (
-    <React.Fragment></React.Fragment>
+    <React.Fragment>
+        
+        <a href="/admin">Admin Dashboard</a>
+
+    </React.Fragment>
   );
 };
 

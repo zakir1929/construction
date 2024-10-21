@@ -20,7 +20,7 @@
     line-height: 24px;
     letter-spacing: -0.5px;
     color: #444444;
-    padding: 43px 14.4px 43px 14.4px !important;
+    padding: 35px 14.4px 35px 14.4px !important;
 }
 
 #header .header-nav-main ul.header-extra-info{
@@ -65,8 +65,11 @@
     z-index: 1000 !important; 
 }
 
+#header .header-logo img{
+    width: 300px !important;
+}
 #header.is-sticky .header-logo img{
-    width: 110px !important;
+    width: 250px !important;
 }
 
 #header.is-sticky .header-nav-main ul > li.dropdown > a{
@@ -81,4 +84,8 @@
 .nav.nav-pills .dropdown-menu a:focus,
 .nav.nav-pills .dropdown-menu a.active{
     background-color: #f8f9fa !important;
+}
+
+.featured-box{
+    min-height: 320px !important;
 }

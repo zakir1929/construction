@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 // Async thunk for fetching API data
-export const settingData = createAsyncThunk('api/fetchData', async () => {
+export const settingData = createAsyncThunk('api/settingData', async () => {
     const response = await axios.get('setting');
     return response.data;
 });

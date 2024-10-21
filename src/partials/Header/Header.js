@@ -6,12 +6,14 @@ import MainMenu from './MainMenu'; // Assuming MainMenu is imported correctly
 //Redux Code
 import { useDispatch, useSelector } from 'react-redux';
 import { settingData } from '../../store/Slice/settingSlice.js'; 
+import { divisionData } from '../../store/Slice/divisionSlice.js'; 
 
 const Header = (props) => {
 
     //Redux Code
     const dispatch = useDispatch();
     const { setting, loading, error } = useSelector((state) => state.settingStore);
+    const { divisions, dloading, derror } = useSelector((state) => state.divisionStore);
 
     const [isVisible, setIsVisible] = useState(false);
     const [isSticky, setIsSticky] = useState(false);
@@ -33,6 +35,7 @@ const Header = (props) => {
 
     useEffect(() => {
         dispatch(settingData());
+        dispatch(divisionData());
     }, [dispatch]);
 
     return (
@@ -49,7 +52,6 @@ const Header = (props) => {
                                     <NavLink to="/">
                                         <img
                                             alt="Porto"
-                                            width={170}
                                             src={setting?.logo} 
                                         />
                                     </NavLink>
@@ -60,7 +62,7 @@ const Header = (props) => {
                             <div className="header-row">
                                 <div className="header-nav header-nav-line header-nav-top-line header-nav-top-line-with-border order-2 order-lg-1">
                                     <div className="header-nav-main header-nav-main-square header-nav-main-arrows header-nav-main-arrows header-nav-main-effect-1 header-nav-main-sub-effect-1">
-                                        <MainMenu setting={setting} />
+                                        <MainMenu setting={setting} divisions={divisions} />
                                     </div>
                                     <button
                                         className="btn header-btn-collapse-nav"
