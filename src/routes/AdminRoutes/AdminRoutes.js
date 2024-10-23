@@ -22,11 +22,8 @@ function AdminLayout() {
 }
 
 const NotFound = props => {
-  return (
-    <React.Fragment>
-        Page is not found
-    </React.Fragment>
-  );
+    window.location.href = "/404";
+    return null; 
 };
 
 
@@ -35,6 +32,7 @@ function AdminRoutes(){
         <Routes>
             <Route element={<AdminLayout />}>
                 <Route path="/" element={<Dashboard />} />
+                <Route path="/profile" element={<Dashboard />} />
 
                 <Route path="*" element={<NotFound />} />
             </Route>

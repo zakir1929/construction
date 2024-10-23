@@ -23,7 +23,12 @@ const Header = (props) => {
     };
 
     function handleScroll() {
-        setIsSticky(window.scrollY > 120);
+        if(window.scrollY > 120){
+            setIsSticky(1);
+        }
+        if(window.scrollY < 80){
+            setIsSticky(0);
+        }
     }
 
     useEffect(() => {

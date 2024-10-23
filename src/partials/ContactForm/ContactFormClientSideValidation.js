@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 import { flash } from '../../toastConfig';
@@ -8,73 +8,80 @@ import './styles.css';
 
 const ContactForm = props => {
 
-const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-});
-
-const [errors, setErrors] = useState({});
-
-const [isSubmitting, setIsSubmitting] = useState(false);
-
-const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-        ...formData,
-        [name]: value,
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
     });
-};
 
-useEffect(() => {
-    if (Object.keys(errors).length > 0) {
-        const firstErrorField = Object.keys(errors)[0];
-
-        const elementToFocus = document.getElementById('contact-form').querySelector(`[name="${firstErrorField}"]`);
-        if (elementToFocus) {
-            elementToFocus.focus();
-        }
-    }
-}, [errors]);
-
-async function handleSubmit(e){
-    e.preventDefault();
-    setIsSubmitting(true);
-    try {
-        const axiosResponse = await axios({
-            method: 'post',
-            url: 'submit-inquiry',
-            data: formData,
-            headers: { 
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
+    const [errors, setErrors] = useState({});
+    
+    // State for submission status
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    
+    // Handle input change
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
         });
+    };
 
+    // Validate form
+    const validate = () => {
+        let tempErrors = {};
+        if (!formData.name) tempErrors.name = "Name is required";
+        if (!formData.email) tempErrors.email = "Email is required";
+        if (!formData.message) tempErrors.message = "Message is required";
 
-        if (axiosResponse.status !== 200) {
-            throw new Error('Network response was not ok');
+        // Basic email format check
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (formData.email && !emailRegex.test(formData.email)) {
+            tempErrors.email = "Invalid email format";
         }
 
-        let response = axiosResponse.data;
-        console.log(axiosResponse.data);
+        return tempErrors;
+    };
 
-        if (response.status === true) {
-            setErrors({});
-            flash('success', response.data.msg);
-            setFormData({ 
-                name: '',
-                email: '',
-                message: ''
-            });
-        }else{
-            setErrors(response.data);
+    // Handle form submission
+    const handleSubmit = async (e) => {
+
+        e.preventDefault();
+
+        // Validate form fields
+        const validationErrors = validate();
+        setErrors(validationErrors);
+
+        // If no errors, proceed with API submission
+        if (Object.keys(validationErrors).length === 0) {
+            setIsSubmitting(true);
+            try {
+                const response = await axios({
+                    method: 'post',
+                    url: 'submit-inquiry',
+                    data: formData,
+                    headers: { 
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                });
+
+                console.log(response.data);
+
+                if (response.status !== 200) {
+                    throw new Error('Network response was not ok');
+                }
+
+                flash('success', response.data.msg);
+                setFormData({ name: '', email: '', message: '' }); // Clear the form
+            } catch (error) {
+                console.log('Error submitting the form:', error);
+                flash('error','Error: submitting the form. Please try again later.');
+            } finally {
+                setIsSubmitting(false);
+            }
         }
-
-    }catch{
-        flash('error', 'Some Errors Found');
-    }
-    setIsSubmitting(false);
-};
+    };
 
 return (
     <React.Fragment>
@@ -86,7 +93,8 @@ return (
                 data-appear-animation-delay={650}
                 style={{ animationDelay: "650ms" }}
                 >
-                <form id="contact-form" onSubmit={handleSubmit} noValidate  >
+                <div className="offset-anchor" id="contact-sent" />
+                    <form onSubmit={handleSubmit} noValidate>
                         <div className="row">
                             <div className="form-group col-md-6">
                                 <label className="form-label mb-1 text-2">Name</label>

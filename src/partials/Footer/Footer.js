@@ -2,8 +2,6 @@ import React from 'react';
 
 import styles from './styles.module.css';
 
-import parse from 'html-react-parser';
-
 import { useDispatch, useSelector } from 'react-redux';
 
 import CleanPhone from '../../helpers/CleanPhone/CleanPhone.js';

@@ -16,9 +16,8 @@ const Home = props => {
             <div role="main" className="main">
                 <HomeSlider />
                 <HomeIntro />
-                <HomeAboutUs />            
-                <HomeParallaxSection />         
                 <Divisions />            
+                <HomeAboutUs />            
                 <FancyBoxGallery />            
             </div>
         </React.Fragment>
