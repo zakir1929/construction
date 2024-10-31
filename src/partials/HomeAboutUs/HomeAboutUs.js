@@ -7,7 +7,7 @@ const HomeAboutUs = props => {
   return (
     <React.Fragment>
             
-<div className="container pt-5">
+<div className="container pt-5 home-about-us">
     <div className="row py-4 mb-2">
             <div className="col-md-6 pe-4">
                 <div className="overflow-hidden">
@@ -68,7 +68,7 @@ const HomeAboutUs = props => {
                 </div>
             </div>
 
-            <div className="col-sm-8 col-md-5 col-lg-4 offset-sm-4 offset-md-5 offset-lg-2 position-relative mt-sm-5"
+            <div className="col-sm-8 col-md-5 col-lg-4 offset-sm-4 offset-md-5 offset-lg-2 position-relative mt-sm-5 image-container"
                 style={{ top: "5rem" }}
                 >
                 <img

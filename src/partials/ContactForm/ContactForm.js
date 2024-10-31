@@ -5,41 +5,48 @@ import { flash } from '../../toastConfig';
 
 import './styles.css';
 
-
 const ContactForm = props => {
 
-const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-});
+    const formInitialState = {};
+    const formFields = [
+        'name',
+        'email',
+        'message',
+    ];
 
-const [errors, setErrors] = useState({});
-
-const [isSubmitting, setIsSubmitting] = useState(false);
-
-const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-        ...formData,
-        [name]: value,
+    formFields.forEach((field) => {
+        formInitialState[field] = '';
     });
-};
 
-useEffect(() => {
-    if (Object.keys(errors).length > 0) {
-        const firstErrorField = Object.keys(errors)[0];
+    const [formData, setFormData] = useState(formInitialState);
 
-        const elementToFocus = document.getElementById('contact-form').querySelector(`[name="${firstErrorField}"]`);
-        if (elementToFocus) {
-            elementToFocus.focus();
+    const [errors, setErrors] = useState({});
+
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name] : value
+        }));
+    };
+
+    useEffect(() => {
+        if (Object.keys(errors).length > 0) {
+            const firstErrorField = Object.keys(errors)[0];
+            
+            const elementToFocus = document.querySelector(`form [name="${firstErrorField}"]`);
+            if (elementToFocus) {
+                elementToFocus.focus();
+            }
         }
-    }
-}, [errors]);
+    }, [errors]);
 
 async function handleSubmit(e){
     e.preventDefault();
     setIsSubmitting(true);
+    
     try {
         const axiosResponse = await axios({
             method: 'post',
@@ -50,22 +57,16 @@ async function handleSubmit(e){
             },
         });
 
-
         if (axiosResponse.status !== 200) {
             throw new Error('Network response was not ok');
         }
 
         let response = axiosResponse.data;
-        console.log(axiosResponse.data);
 
         if (response.status === true) {
             setErrors({});
             flash('success', response.data.msg);
-            setFormData({ 
-                name: '',
-                email: '',
-                message: ''
-            });
+            setFormData(formInitialState);
         }else{
             setErrors(response.data);
         }

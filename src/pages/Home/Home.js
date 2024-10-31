@@ -10,10 +10,17 @@ import HomeParallaxSection from '../../partials/HomeParallaxSection/HomeParallax
 import FancyBoxGallery from '../../partials/FancyBoxGallery/FancyBoxGallery.js'
 import Divisions from '../../partials/Divisions/Divisions.js'
 
+import SEO from '../../partials/SEO/SEO.js'
+
 const Home = props => {
   return (
         <React.Fragment>
-            <div role="main" className="main">
+        <SEO 
+            title = "Home"
+            description = "Home Description"
+            keywords = "Home, Team"
+        />
+        <div role="main" className="main">
                 <HomeSlider />
                 <HomeIntro />
                 <Divisions />            

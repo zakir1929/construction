@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 
 import CleanPhone from '../../helpers/CleanPhone/CleanPhone.js';
 
@@ -7,28 +7,49 @@ import { NavLink } from 'react-router-dom';
 
 const MainMenu = (props) => {
 
+
+    const [productCollapse, setproductCollapse] = useState('');
+
+    function handleProductCollapse(e){
+        e.preventDefault();
+        if (window.screen.width < 992){
+            
+            if(productCollapse == ''){
+                setproductCollapse('open');
+            }else{
+                setproductCollapse('');
+            }
+        }
+    }
+
+    useEffect(() => {
+        if(props?.collapse && props?.collapse == 'closed'){
+            setproductCollapse('');
+        }
+    }, [props.collapse]);
+
   return (
         <React.Fragment>
-            <nav className="collapse">
+            <nav className={`collapse ${props.collapse}`}>
                 <ul className="nav nav-pills" id="mainNav">
                     <li className="dropdown">
-                        <NavLink className="dropdown-item" to="/" end>
+                        <NavLink onClick={() => { props.setCollapse('closed'); }}  className="dropdown-item" to="/" end>
                             Home
                         </NavLink>
                     </li>
                     <li className="dropdown">
-                        <NavLink className="dropdown-item" to="/about-us">
+                        <NavLink onClick={() => { props.setCollapse('closed'); }}  className="dropdown-item" to="/about-us">
                             About
                         </NavLink>
                     </li>
-                    <li className="dropdown">
-                        <a className="dropdown-item dropdown-toggle" href="/" onClick={(e) => e.preventDefault()}>
+                    <li className={`dropdown ${productCollapse}`}>
+                        <a className="dropdown-item dropdown-toggle" href="/" onClick={handleProductCollapse}>
                             Products
                         </a>
                         <ul className="dropdown-menu">
                             {props?.divisions?.map((division,key) => (
                             <li key={key}>
-                                <NavLink className="dropdown-item" to={`/division/${division.slug}`} >
+                                <NavLink onClick={() => { props.setCollapse('closed'); }} className="dropdown-item" to={`/division/${division.slug}`} >
                                     {division.title}
                                 </NavLink>
                             </li>
@@ -36,7 +57,7 @@ const MainMenu = (props) => {
                         </ul>
                     </li>
                     <li className="dropdown">
-                        <NavLink className="dropdown-item" to="/contact-us">
+                        <NavLink onClick={() => { props.setCollapse('closed'); }}  className="dropdown-item" to="/contact-us">
                             Contact Us
                         </NavLink>
                     </li>

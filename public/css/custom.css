@@ -46,6 +46,12 @@
     padding: 35px 14.4px 35px 14.4px !important;
 }
 
+@media(max-width: 992px){
+    #header .header-nav-main ul > li.dropdown > a{
+        padding: 15px 14.4px 15px 14.4px !important;    
+    }
+}
+
 #header .header-nav-main ul.header-extra-info{
     font-family: Poppins, sans-serif;
 }
@@ -92,12 +98,22 @@
 #header .header-logo img{
     width: 300px !important;
 }
+
+
 #header.is-sticky .header-logo img{
     width: 250px !important;
 }
 
 #header.is-sticky .header-nav-main ul > li.dropdown > a{
     padding: 24px 14.4px 24px 14.4px !important;
+}
+@media(max-width: 767px){
+    #header .header-logo img,#header.is-sticky .header-logo img{
+        width: 200px !important;
+    }
+    .home-about-us .image-container img:nth-child(1),.home-about-us .image-container img:nth-child(2){
+        display: none !important;
+    }
 }
 
 #header.header-effect-shrink .header-container{
@@ -113,6 +129,14 @@
     background-color: #f8f9fa !important;
 }
 
+@media (max-width: 992px) {
+    .nav.nav-pills .dropdown-menu a:hover,
+    .nav.nav-pills .dropdown-menu a:focus,
+    .nav.nav-pills .dropdown-menu a.active{
+        background-color: #f8f9fa !important;
+        color: black;
+    }
+}
 
 .featured-boxes-modern-style-2 .featured-box .box-content{
     min-height: 340px !important;
