@@ -96,12 +96,13 @@
 }
 
 #header .header-logo img{
-    width: 300px !important;
+    width: 140px !important;
+    padding: 15px;
 }
 
 
 #header.is-sticky .header-logo img{
-    width: 250px !important;
+    width: 100px !important;
 }
 
 #header.is-sticky .header-nav-main ul > li.dropdown > a{
