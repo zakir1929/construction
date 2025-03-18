@@ -3,7 +3,7 @@ import React from 'react';
 import './styles.css';
 
 
-const OurVision = props => {
+const OurVision = (props) => {
   return (
     <React.Fragment>
             
@@ -18,16 +18,7 @@ const OurVision = props => {
                                     data-appear-animation="maskUp"
                                     style={{ animationDelay: "100ms" }}
                                     >
-                                    <span>We are Porto, We </span>
-                                    <span
-                                    className="word-rotator-words bg-primary"
-                                    style={{ width: "122.234px" }}
-                                    >
-                                    <b className="is-visible">Create</b>
-                                    <b className="is-hidden">Build</b>
-                                    <b className="is-hidden">Develop</b>
-                                    </span>
-                                    <span> Solutions</span>
+                                    <span>{ props?.setting?.about_us_our_vision_title }</span>
                                     </h1>
                                 </div>
                                 <div className="overflow-hidden mb-3">
@@ -37,52 +28,27 @@ const OurVision = props => {
                                     data-appear-animation-delay={200}
                                     style={{ animationDelay: "200ms" }}
                                     >
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-                                    elementum, nulla vel pellentesque consequat, ante nulla
-                                    hendrerit arcu, ac tincidunt mauris lacus sed leo.
+                                        { props?.setting?.about_us_our_vision_subtitle }
                                     </p>
                                 </div>
                             </div>
                     </div>
+
                     <div className="row mt-3 mb-5">
+                        {props?.setting?.about_us_our_vision_sections.map((item, index) => (
                             <div
-                            className="col-md-4 appear-animation animated fadeInLeftShorter appear-animation-visible"
-                            data-appear-animation="fadeInLeftShorter"
-                            data-appear-animation-delay={800}
-                            style={{ animationDelay: "800ms" }}
+                                key={index}
+                                className={`col-md-4 appear-animation animated fadeIn appear-animation-visible`}
+                                data-appear-animation="fadeIn"
+                                data-appear-animation-delay={600}
+                                style={{ animationDelay: "600ms" }}
                             >
-                            <h3 className="font-weight-bold text-4 mb-2">Our Mission</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-                                elementum, nulla vel pellentesque consequat, ante nulla hendrerit
-                                arcu.
-                            </p>
-                        </div>
-                        <div
-                        className="col-md-4 appear-animation animated fadeIn appear-animation-visible"
-                        data-appear-animation="fadeIn"
-                        data-appear-animation-delay={600}
-                        style={{ animationDelay: "600ms" }}
-                        >
-                            <h3 className="font-weight-bold text-4 mb-2">Our Vision</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-                                nulla vel pellentesque consequat, ante nulla hendrerit arcu.
-                            </p>
-                        </div>
-                        <div
-                        className="col-md-4 appear-animation animated fadeInRightShorter appear-animation-visible"
-                        data-appear-animation="fadeInRightShorter"
-                        data-appear-animation-delay={800}
-                        style={{ animationDelay: "800ms" }}
-                        >
-                            <h3 className="font-weight-bold text-4 mb-2">Why Us</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-                                elementum, nulla vel consequat, ante nulla hendrerit arcu.
-                            </p>
-                        </div>
+                                <h3 className="font-weight-bold text-4 mb-2">{item.title}</h3>
+                                <p>{item.content}</p>
+                            </div>
+                        ))}
                     </div>
+
                 </div>
             </div>
         </div>

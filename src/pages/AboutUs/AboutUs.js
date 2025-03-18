@@ -1,5 +1,7 @@
 import React,{useEffect} from 'react';
 
+import { useSelector } from 'react-redux';
+
 import './styles.css';
 
 import PageHeader from '../../partials/PageHeader/PageHeader.js'
@@ -9,21 +11,24 @@ import WhoWeAre from '../../partials/WhoWeAre/WhoWeAre.js'
 import SEO from '../../partials/SEO/SEO.js'
 
 
+import ContactForm from '../../partials/ContactForm/ContactForm.js'
+
 const AboutUs = props => {
 
+    const { setting, loading, error } = useSelector((state) => state.settingStore);
 
-  return (
+    return (
         <React.Fragment>
             <SEO 
-                title = "About Us"
-                description = "About Us"
-                keywords = "Training, Team"
+                title = {setting?.about_us_seo_title}
+                description = {setting?.about_us_seo_description}
+                keywords = {setting?.about_us_seo_keywords}
             />
             <div role="main" className="main">
-                <PageHeader title="About" boldTitle="Us" parentPage="Home" />
-                <OurVision />
-                <Counter />        
-                <WhoWeAre />
+                <PageHeader title={setting?.about_us_page_title} parentPage="Home" />
+                <OurVision setting={setting} />
+                <Counter setting={setting} />        
+                <WhoWeAre setting={setting} />
             </div>
         </React.Fragment>
     );

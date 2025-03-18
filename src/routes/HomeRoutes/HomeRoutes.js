@@ -15,7 +15,6 @@ import ProductDetail from '../../pages/ProductDetail/ProductDetail.js';
 import Division from '../../pages/Division/Division.js';
 import Demo from '../../pages/Demo/Demo.js';
 
-import PageHeader from '../../partials/PageHeader/PageHeader.js'
 
 function HomeLayout(){
     return (

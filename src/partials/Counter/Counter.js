@@ -36,7 +36,7 @@ const CounterStart = ({ targetValue, appendSymbol = "",duration=1 }) => {
 };
 
 
-const Counter = props => {
+const Counter = (props) => {
   return (
     <React.Fragment>
 
@@ -48,40 +48,15 @@ const Counter = props => {
         >
             <div className="container">
                 <div className="row counters counters-sm pb-4 pt-3">
-                    <div className="col-sm-6 col-lg-3 mb-5 mb-lg-0">
-                        <div className="counter">
-                            <i className="icons icon-user text-color-light" />
-                            <CounterStart targetValue={50000} appendSymbol="+" duration={3}  />
-                            <label className="text-4 mt-1 text-color-light">
-                            Happy Clients
-                            </label>
-                        </div>
+                  {props?.setting?.about_us_counter_sections?.map((counter, index) => (
+                    <div className="col-sm-6 col-lg-3 mb-5 mb-lg-0" key={index}>
+                      <div className="counter">
+                        <i className={`icons ${counter.icon} text-color-light`} />
+                        <CounterStart targetValue={counter.number} appendSymbol={counter.symbol} duration={counter.duration} />
+                        <label className="text-4 mt-1 text-color-light">{counter.title}</label>
+                      </div>
                     </div>
-                    <div className="col-sm-6 col-lg-3 mb-5 mb-lg-0">
-                        <div className="counter">
-                            <i className="icons icon-badge text-color-light" />
-                            <CounterStart targetValue={15} appendSymbol="" duration={2} />
-                            <label className="text-4 mt-1 text-color-light">
-                            Years In Business
-                            </label>
-                        </div>
-                    </div>
-                    <div className="col-sm-6 col-lg-3 mb-5 mb-sm-0">
-                        <div className="counter">
-                            <i className="icons icon-graph text-color-light" />
-                            <CounterStart targetValue={352} appendSymbol="+" duration={3}  />
-                            <label className="text-4 mt-1 text-color-light">High Score</label>
-                        </div>
-                    </div>
-                    <div className="col-sm-6 col-lg-3">
-                        <div className="counter">
-                            <i className="icons icon-cup text-color-light" />
-                            <CounterStart targetValue={178} appendSymbol="+" duration={2} />
-                            <label className="text-4 mt-1 text-color-light">
-                            Cups of Coffee
-                            </label>
-                        </div>
-                    </div>
+                  ))}
                 </div>
             </div>
         </section>
